@@ -12,6 +12,11 @@ hydrogainLogo_Square    = ImageTk.PhotoImage(Image.open("Resources/Images/HydroG
 hydrogainLogo_Rectangle = ImageTk.PhotoImage(Image.open("Resources/Images/HydroGainLogo_Rectangle.png"))
 hydrogainLogo_SquareNT  = ImageTk.PhotoImage(Image.open("Resources/Images/HydroGainLogo_NoText.png"))
 
+officeLogo              = ImageTk.PhotoImage(Image.open("Resources/Images/OfficeBuilding.png"))
+erpLogo                 = ImageTk.PhotoImage(Image.open("Resources/Images/ERP.png"))
+factpryLogo             = ImageTk.PhotoImage(Image.open("Resources/Images/Factory2.png"))
+
+
 CNPP_D9Image            = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9.png").resize((200, 200)))
 CNPP_D9AImage           = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9A.png").resize((200, 200)))
 
@@ -38,6 +43,8 @@ mainWindow.columnconfigure(1, weight = 1)
 mainWindow.columnconfigure(2, weight = 1)
 mainWindow.columnconfigure(3, weight = 1)
 mainWindow.columnconfigure(4, weight = 1)
+mainWindow.columnconfigure(5, weight = 1)
+mainWindow.columnconfigure(6, weight = 1)
 
 
 screenWidth  = mainWindow.winfo_screenwidth()*0.5
