@@ -10,7 +10,7 @@ class ResidentialBuilding:
     
     
     def buildingClass(self):
-        buildingClass = "Family A"
+        buildingClass = "Class 1"
         
         if (self.buildingType == "individual" and self.stageNmb <= 1):
             buildingClass = "Class 1"
@@ -79,13 +79,16 @@ class ResidentialBuilding:
     
         
     def __str__(self):
-        return f"""The building type is a residential \"{self.buildingType}\" building. 
+        return f"""
+    The building type is a residential \"{self.buildingType}\" building. 
     The building has {self.stageNmb} floors and is {self.height} meters high.
     The distance between the accomodation and the staircase is less than {self.stairsDistance} meters.
-    There is a ladder truck access to the accomodation : {self.ladderTruckAccess}."""
+    There is a ladder truck access to the accomodation : {self.ladderTruckAccess}.
+    _____________________________________________________________________________________________________"""
     
     def __repr__(self):
         return f"""ResidentialBuilding(name = {self.name}, buildingType = \"{self.buildingType}\", stageNmb = {self.stageNmb}, height = {self.height},
-    stairsDistance = {self.stairsDistance}, ladderTruckAccess = {self.ladderTruckAccess})"""
+    stairsDistance = {self.stairsDistance}, ladderTruckAccess = {self.ladderTruckAccess})
+    _____________________________________________________________________________________________________"""
         
         

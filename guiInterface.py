@@ -63,7 +63,7 @@ mainWindow.geometry(str(int(screenWidth)) + "x" + str(int(screenHeight)))
 
 
 
-### FUNCTION ###
+### FUNCTIONS ###
 def openResidentialBuildWin():
     residentialBuildingWindow(mainWindow, screenWidth, screenHeight)
     
@@ -75,15 +75,18 @@ def openERPBuildWin():
     
 def openIndustrialBuildWin():
     industrialBuildingWindow(mainWindow, screenWidth, screenHeight)
+    
+def openCredits():
+    pass  
 
 
 
-### Row 1 ###
+### Row 0 ###
 mainTitle = ttk.Label(mainWindow, text = "CNPP Practical Guide D9 / D9A", font = ("TkDefaultFont", 16, "bold"), foreground = hydrogainBlue)
 mainTitle.grid(row = 0, column = 0, columnspan = 8)
 
 
-### Row 2 ###
+### Row 1 ###
 buttonResidentialBuildTitle = ttk.Label(mainWindow, text = "Residential Building", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
 buttonResidentialBuildTitle.grid(row = 1, column = 1, sticky = "s")
 
@@ -97,7 +100,7 @@ buttonIndustrialBuildTitle = ttk.Label(mainWindow, text = "Industrial Building",
 buttonIndustrialBuildTitle.grid(row = 1, column = 7, sticky = "s")
 
 
-### Row 3 ###
+### Row 2 ###
 buttonResidentialBuild  = ttk.Button(mainWindow, image = residentialLogo, command = openResidentialBuildWin, padding = 30)
 buttonResidentialBuild.grid(row = 2, column = 1, padx = 30)
 
@@ -111,24 +114,26 @@ buttonIndustrialBuild = ttk.Button(mainWindow, image = factoryLogo, command = op
 buttonIndustrialBuild.grid(row = 2, column = 7, padx = 30)
 
 
-### Row 4 ###
-frame = tk.Frame(mainWindow)
-frame.grid(row = 4, column = 1, columnspan = 3, sticky = "nsew")
+### Row 3 ###
+frame = ttk.Frame(mainWindow)
+frame.grid(row = 3, column = 0, columnspan = 4, sticky = "nsew")
 
-backgroundLabelHydrogain = tk.Label(frame, image = hydrogainLogo_SquareNT)
-backgroundLabelHydrogain.grid(row = 3, column = 1)
-
-backgroundLabelD9 = tk.Label(frame, image = CNPP_D9Image)
-backgroundLabelD9.grid(row = 3, column = 1)
-
-backgroundLabelD9A = tk.Label(frame, image = CNPP_D9AImage)
-backgroundLabelD9A.grid(row = 3, column = 1)
+backgroundLabelHydrogain = ttk.Label(frame, image = hydrogainLogo_SquareNT)
+backgroundLabelD9 = ttk.Label(frame, image = CNPP_D9Image)
+backgroundLabelD9A = ttk.Label(frame, image = CNPP_D9AImage)
 
 backgroundLabelD9.grid(row = 0, column = 0, padx = 5)
 backgroundLabelD9A.grid(row = 0, column = 1, padx = 5)
 backgroundLabelHydrogain.grid(row = 0, column = 2, padx = 5)
 
-### Row 5 ###
+style = ttk.Style()
+style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
+
+creditsButton = ttk.Button(frame, text = "Credits", style = "HGBlue.TButton", command = openCredits)
+creditsButton.grid(row = 1, column = 0, columnspan = 4, sticky = "nswe", padx = 5, pady = 5)
+
+
+### Row 4 ###
 footNote = ttk.Label(mainWindow, text = "2024 - Guillaume THIRIET", font = ("Times", 10, "italic"))
 footNote.grid(row = 4, column = 7, columnspan = 2, sticky = "se")
 
