@@ -3,9 +3,11 @@ from guiResidentialBuilding import residentialBuildingWindow
 from guiOfficeBuilding import officeBuildingWindow
 from guiERPBuilding import erpBuildingWindow
 from guiIndustrialBuilding import industrialBuildingWindow
+from guiCredits import creditsWindow
 
 from tkinter import ttk
 from PIL import Image, ImageTk
+
 
 
 ##### Main window initialisation #####
@@ -17,11 +19,13 @@ hydrogainLogo_Square    = ImageTk.PhotoImage(Image.open("Resources/Images/HydroG
 hydrogainLogo_Rectangle = ImageTk.PhotoImage(Image.open("Resources/Images/HydroGainLogo_Rectangle.png"))
 hydrogainLogo_SquareNT  = ImageTk.PhotoImage(Image.open("Resources/Images/HydroGainLogo_NoText.png"))
 
+cnppLogo_Simple         = ImageTk.PhotoImage(Image.open("Resources/Images/CNPPLogo_Simple.png").resize((210, 125)))
+cnppLogo_Complex        = ImageTk.PhotoImage(Image.open("Resources/Images/CNPPLogo_Complex.png").resize((185, 125)))
+
 residentialLogo         = ImageTk.PhotoImage(Image.open("Resources/Images/ResidentialBuilding.png").resize((125, 125)))
 officeLogo              = ImageTk.PhotoImage(Image.open("Resources/Images/OfficeBuilding.png").resize((125, 125)))
 erpLogo                 = ImageTk.PhotoImage(Image.open("Resources/Images/ERP.png").resize((125, 125)))
-factoryLogo             = ImageTk.PhotoImage(Image.open("Resources/Images/Factory2.png").resize((125, 125)))
-
+factoryLogo             = ImageTk.PhotoImage(Image.open("Resources/Images/Factory.png").resize((125, 125)))
 
 CNPP_D9Image            = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9.png").resize((75, 75)))
 CNPP_D9AImage           = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9A.png").resize((75, 75)))
@@ -32,13 +36,14 @@ hydrogainBlue  = "#263A91"
 hydrogainGreen = "#A1CA18"
 
 styleTitle = ttk.Style()
-styleTitle.configure("titleLabel", font=("TkDefaultFont", 16, "bold"), foreground = hydrogainBlue)
+styleTitle.configure("titleLabel", font=("TkDefaultFont", 20, "bold"), foreground = hydrogainBlue)
 
 
 
 ##### Main window configuration #####
 mainWindow.title("CNPP Practical Guide D9 / D9A")
-mainWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+#mainWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+mainWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
 
 mainWindow.rowconfigure(0, weight = 1)
 mainWindow.rowconfigure(1, weight = 1)
@@ -77,7 +82,7 @@ def openIndustrialBuildWin():
     industrialBuildingWindow(mainWindow, screenWidth, screenHeight)
     
 def openCredits():
-    pass  
+    creditsWindow(mainWindow, screenWidth, screenHeight, {"cnppD9" : CNPP_D9Image, "cnppD9A" : CNPP_D9AImage, "residentialImage" : residentialLogo, "officeImage" : officeLogo, "erpImage" : erpLogo, "industrialImage" : factoryLogo})  
 
 
 
@@ -118,13 +123,13 @@ buttonIndustrialBuild.grid(row = 2, column = 7, padx = 30)
 frame = ttk.Frame(mainWindow)
 frame.grid(row = 3, column = 0, columnspan = 4, sticky = "nsew")
 
-backgroundLabelHydrogain = ttk.Label(frame, image = hydrogainLogo_SquareNT)
+backgroundLabelLogo = ttk.Label(frame, image = cnppLogo_Simple)
 backgroundLabelD9 = ttk.Label(frame, image = CNPP_D9Image)
 backgroundLabelD9A = ttk.Label(frame, image = CNPP_D9AImage)
 
 backgroundLabelD9.grid(row = 0, column = 0, padx = 5)
 backgroundLabelD9A.grid(row = 0, column = 1, padx = 5)
-backgroundLabelHydrogain.grid(row = 0, column = 2, padx = 5)
+backgroundLabelLogo.grid(row = 0, column = 2, padx = 5)
 
 style = ttk.Style()
 style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)

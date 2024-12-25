@@ -16,7 +16,8 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     residentialBuildingWindow = tk.Toplevel(rootWindow)
     residentialBuildingWindow.title("CNPP Practical Guide - Residential Building")
-    residentialBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+    #residentialBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+    residentialBuildingWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
     residentialBuildingWindow.geometry(str(int(screenWidth*1.2)) + "x" + str(int(screenHeight*1.2)))
     
     residentialBuildingWindow.rowconfigure(0, weight = 1)
@@ -76,13 +77,6 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
                 lastWidget = labelChildren[-1]
                 lastWidget.destroy()
             
-                
-    buildingClassTxt                     = "N/A"
-    flowRateTxt                          = "N/A"
-    fireHydrantPointsNmbTxt              = "N/A"
-    fireHydrantPointsDistanceTxt         = "N/A"
-    fireHydrantPointsEntranceDistanceTxt = "N/A"
-    minimalDurationTxt                   = "N/A"
         
     def calculationButton():
         if len(residentialBuildingObjects) > 0:
@@ -110,8 +104,8 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
         
     
     ### Row 0 ###
-    buildingClassTitle = ttk.Label(residentialBuildingWindow, text = "Residential building", font = ("TkDefaultFont", 16, "bold"), foreground = hydrogainBlue)
-    buildingClassTitle.grid(row = 0, column = 0, columnspan = 10)
+    residentialClassTitle = ttk.Label(residentialBuildingWindow, text = "Residential building", font = ("TkDefaultFont", 20, "bold"), foreground = hydrogainBlue)
+    residentialClassTitle.grid(row = 0, column = 0, columnspan = 10)
     
     ### Row 1 ###
     buildingNameLabel = ttk.Label(residentialBuildingWindow, text = "Building name", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
@@ -157,7 +151,7 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
     buildingStairsDistanceEntry.grid(row = 5, column = 1, sticky = "we")
     
     ### Row 6 ###
-    buildingLadderTruckAccessLabel = ttk.Label(residentialBuildingWindow, text = "Access to the stairs from the \"ladder truck way\" ?", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
+    buildingLadderTruckAccessLabel = ttk.Label(residentialBuildingWindow, text = "Access to the stairs from the \"ladder truck\" way ?", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     buildingLadderTruckAccessLabel.grid(row = 6, column = 0)
     
     frame = ttk.Frame(residentialBuildingWindow)
@@ -193,8 +187,8 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
    
     
     ##### RESULTS GUI #####
-    calculationFrame = ttk.Frame(residentialBuildingWindow)
-    calculationFrame.grid(row = 7, column = 2, rowspan = 3, sticky = "nw", padx = 10, pady = 10)
+    calculationFrame = tk.Frame(residentialBuildingWindow)
+    calculationFrame.grid(row = 7, column = 2, rowspan = 3, sticky = "w", padx = 10, pady = 10)
     
     buildingClassLabel = ttk.Label(calculationFrame, text = "Building class", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     buildingClassLabel.grid(row = 0, column = 0, sticky = "w")

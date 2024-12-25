@@ -158,9 +158,12 @@ class ErpBuilding:
         
     
     def __str__(self):
-        return f"""The building type is an ERP building of {self.buildingClass}.
-    The surface of the building is {self.surface} m2."""
+        return f"""
+    The building type is an ERP building of {self.buildingClass}.
+    The surface of the building is {self.surface} m2.
+    _____________________________________________________________________________________________________"""
     
     def __repr__(self):
-        return f"""ErpBuilding(name = {self.name}, buildingClass = {self.buildingClass}, surface = {self.surface})"""
+        return f"""ErpBuilding(name = {self.name}, buildingClass = {self.buildingClass}, surface = {self.surface})
+    _____________________________________________________________________________________________________"""
 

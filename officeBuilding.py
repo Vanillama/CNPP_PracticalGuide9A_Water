@@ -59,10 +59,13 @@ class OfficeBuilding:
     
     
     def __str__(self):
-        return f"""The building type is an office building.
-    The building is {self.height} meters high. The surface of the building is {self.surface} m2."""
+        return f"""
+    The building type is an office building.
+    The building is {self.height} meters high. The surface of the building is {self.surface} m2.
+    _____________________________________________________________________________________________________"""
     
     def __repr__(self):
-        return f"""OfficeBuilding(name = {self.name}, height = {self.height}, surface = {self.surface})"""
+        return f"""OfficeBuilding(name = {self.name}, height = {self.height}, surface = {self.surface})
+    _____________________________________________________________________________________________________"""
         
 

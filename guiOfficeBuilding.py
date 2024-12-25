@@ -16,7 +16,8 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     officeBuildingWindow = tk.Toplevel(rootWindow)
     officeBuildingWindow.title("CNPP Practical Guide - Office Building")
-    officeBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+    #officeBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
+    officeBuildingWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
     officeBuildingWindow.geometry(str(int(screenWidth*1.2)) + "x" + str(int(screenHeight*1.2)))
     
     officeBuildingWindow.rowconfigure(0, weight = 1)
@@ -71,12 +72,6 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
                 lastWidget.destroy()
     
     
-    flowRateTxt                          = "N/A"
-    fireHydrantPointsNmbTxt              = "N/A"
-    fireHydrantPointsDistanceTxt         = "N/A"
-    fireHydrantPointsEntranceDistanceTxt = "N/A"
-    minimalDurationTxt                   = "N/A"
-    
     def calculationButton():
         if len(officeBuildingObjects) > 0:
             i = officeBuildingObjects[-1]
@@ -101,7 +96,7 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     
     ### Row 0 ###
-    officeClassTitle = ttk.Label(officeBuildingWindow, text = "Office building", font = ("TkDefaultFont", 16, "bold"), foreground = hydrogainBlue)
+    officeClassTitle = ttk.Label(officeBuildingWindow, text = "Office building", font = ("TkDefaultFont", 20, "bold"), foreground = hydrogainBlue)
     officeClassTitle.grid(row = 0, column = 0, columnspan = 10)
     
     ### Row 1 ###
@@ -154,7 +149,7 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     ##### RESULTS GUI #####
     calculationFrame = ttk.Frame(officeBuildingWindow)
-    calculationFrame.grid(row = 4, column = 2, rowspan = 3, sticky ="nw", padx = 10, pady = 10)
+    calculationFrame.grid(row = 4, column = 2, rowspan = 3, sticky ="w", padx = 10, pady = 10)
     
     flowRateLabel = ttk.Label(calculationFrame, text = "Flow-rate [m3.h-1]", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     flowRateLabel.grid(row = 0, column = 0, sticky = "w")
