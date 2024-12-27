@@ -145,6 +145,7 @@ def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
     buildingSurfaceLabel.grid(row = 4, column = 0)
     
     buildingSurfaceEntryVar = tk.DoubleVar()
+    buildingSurfaceEntryVar.set(100.0)
     buildingSurfaceEntry    = ttk.Entry(erpBuildingWindow,  textvariable = buildingSurfaceEntryVar)
     buildingSurfaceEntry.grid(row = 4, column = 1, sticky = "we")
     
@@ -173,38 +174,52 @@ def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     ##### RESULTS GUI #####
     calculationFrame = ttk.Frame(erpBuildingWindow)
-    calculationFrame.grid(row = 5, column = 2, rowspan = 3, sticky ="w", padx = 10, pady = 10)
+    calculationFrame.grid(row = 5, column = 2, rowspan = 3, sticky = "we", padx = 10, pady = 10)
+    
+    calculationFrame.rowconfigure(0, weight = 1)
+    calculationFrame.rowconfigure(1, weight = 1)
+    calculationFrame.rowconfigure(2, weight = 1)
+    calculationFrame.rowconfigure(3, weight = 1)
+    calculationFrame.rowconfigure(4, weight = 1)
+    calculationFrame.rowconfigure(5, weight = 1)
+    
+    calculationFrame.columnconfigure(0, weight = 1)
+    calculationFrame.columnconfigure(1, weight = 1)
+    
+    
+    resultsLabel = ttk.Label(calculationFrame, text = "Results", font = ("TkDefaultFont", 16, "bold"), foreground = hydrogainBlue)
+    resultsLabel.grid(row = 0, column = 0, columnspan = 2, padx = 30)   
     
     flowRateLabel = ttk.Label(calculationFrame, text = "Flow-rate [m3.h-1]", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
-    flowRateLabel.grid(row = 0, column = 0, sticky = "w")
+    flowRateLabel.grid(row = 1, column = 0, sticky = "w")
     flowRateValue = ttk.Label(calculationFrame, text = erpBuildingObjectValue["flowRateTxt"], font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
-    flowRateValue.grid(row = 1, column = 0, sticky = "w")
+    flowRateValue.grid(row = 1, column = 1)
     
     fireHydrantPointsNmbLabel = ttk.Label(calculationFrame, text = "Number of Fire Hydrant points", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     fireHydrantPointsNmbLabel.grid(row = 2, column = 0, sticky = "w")
     fireHydrantPointsNmbValue = ttk.Label(calculationFrame, text = erpBuildingObjectValue["fireHydrantPointsNmbTxt"], font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
-    fireHydrantPointsNmbValue.grid(row = 3, column = 0, sticky = "w")
+    fireHydrantPointsNmbValue.grid(row = 2, column = 1)
     
     fireHydrantPointsDistanceLabel = ttk.Label(calculationFrame, text = "Distance btw Fire Hydrant points", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
-    fireHydrantPointsDistanceLabel.grid(row = 4, column = 0, sticky = "w")
+    fireHydrantPointsDistanceLabel.grid(row = 3, column = 0, sticky = "w")
     fireHydrantPointsDistanceValue = ttk.Label(calculationFrame, text = erpBuildingObjectValue["fireHydrantPointsDistanceTxt"], font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
-    fireHydrantPointsDistanceValue.grid(row = 5, column = 0, sticky = "w")
+    fireHydrantPointsDistanceValue.grid(row = 3, column = 1)
     
     fireHydrantPointsEntranceDistanceLabel = ttk.Label(calculationFrame, text = "Distance btw Fire Hydrant and the entrance", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
-    fireHydrantPointsEntranceDistanceLabel.grid(row = 6, column = 0, sticky = "w")
+    fireHydrantPointsEntranceDistanceLabel.grid(row = 4, column = 0, sticky = "w")
     fireHydrantPointsEntranceDistanceValue = ttk.Label(calculationFrame, text = erpBuildingObjectValue["fireHydrantPointsEntranceDistanceTxt"], font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
-    fireHydrantPointsEntranceDistanceValue.grid(row = 7, column = 0, sticky = "w")
+    fireHydrantPointsEntranceDistanceValue.grid(row = 4, column = 1)
     
     minimalDurationLabel = ttk.Label(calculationFrame, text = "Minimum duration for the application of water", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
-    minimalDurationLabel.grid(row = 8, column = 0, sticky = "w")
+    minimalDurationLabel.grid(row = 5, column = 0, sticky = "w")
     minimalDurationValue = ttk.Label(calculationFrame, text = erpBuildingObjectValue["minimalDurationTxt"], font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
-    minimalDurationValue.grid(row = 9, column = 0, sticky = "w")
+    minimalDurationValue.grid(row = 5, column = 1)
        
     
     
     ### SUMMARY ###
     canvasFrame = ttk.Frame(erpBuildingWindow)
-    canvasFrame.grid(row = 1, column = 2, rowspan = 3, sticky = "nswe", padx = 10)
+    canvasFrame.grid(row = 1, column = 2, rowspan = 4, sticky = "nswe", padx = 10)
     canvasFrame.grid_rowconfigure(0, weight = 1)  
     canvasFrame.grid_columnconfigure(0, weight = 0) 
     canvasFrame.grid_columnconfigure(1, weight = 1)  

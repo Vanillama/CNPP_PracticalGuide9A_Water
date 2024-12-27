@@ -51,6 +51,7 @@ mainWindow.rowconfigure(2, weight = 2)
 mainWindow.rowconfigure(3, weight = 1)
 mainWindow.rowconfigure(4, weight = 1)
 
+
 mainWindow.columnconfigure(0, weight = 1)
 mainWindow.columnconfigure(1, weight = 1)
 mainWindow.columnconfigure(2, weight = 1)
@@ -121,7 +122,7 @@ buttonIndustrialBuild.grid(row = 2, column = 7, padx = 30)
 
 ### Row 3 ###
 frame = ttk.Frame(mainWindow)
-frame.grid(row = 3, column = 0, columnspan = 4, sticky = "nsew")
+frame.grid(row = 3, column = 0, columnspan = 4)
 
 backgroundLabelLogo = ttk.Label(frame, image = cnppLogo_Simple)
 backgroundLabelD9 = ttk.Label(frame, image = CNPP_D9Image)
