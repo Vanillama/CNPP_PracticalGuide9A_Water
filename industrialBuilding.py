@@ -76,13 +76,16 @@ class IndustrialBuilding:
 
 
     def __str__(self):
-        return f"""The building type is an industrial building of risk category : {self.riskCategory}.
+        return f"""
+    The building type is an industrial building of risk category : {self.riskCategory}.
     The building is {self.height} meters high. The surface of the building is {self.surface} m2. 
     The fire resistance of the mechanical structure of the building is {self.fireResistance}.
     The building contains hazardous materials : {self.hazardousMaterial}.
     The type of internal intervention is : {self.internalInterventionType}.
-    The building is equipped with a fire safety system : {self.autoWaterExtinctDevc}."""
+    The building is equipped with a fire safety system : {self.autoWaterExtinctDevc}.
+    _____________________________________________________________________________________________"""
     
     def __repr__(self):
         return f"""IndustrialBuilding(name = {self.name}, height = {self.height}, surface = {self.surface}, fireResistance = {self.fireResistance}, hazardousMaterial = {self.hazardousMaterial}, internalInterventionType = {self.internalInterventionType}, 
-    riskCategory = {self.riskCategory}, autoWaterExtinctDevc = {self.autoWaterExtinctDevc})"""
+    riskCategory = {self.riskCategory}, autoWaterExtinctDevc = {self.autoWaterExtinctDevc})
+    _____________________________________________________________________________________________"""

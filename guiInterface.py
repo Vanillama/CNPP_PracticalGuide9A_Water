@@ -22,13 +22,13 @@ hydrogainLogo_SquareNT  = ImageTk.PhotoImage(Image.open("Resources/Images/HydroG
 cnppLogo_Simple         = ImageTk.PhotoImage(Image.open("Resources/Images/CNPPLogo_Simple.png").resize((210, 125)))
 cnppLogo_Complex        = ImageTk.PhotoImage(Image.open("Resources/Images/CNPPLogo_Complex.png").resize((185, 125)))
 
-residentialLogo         = ImageTk.PhotoImage(Image.open("Resources/Images/ResidentialBuilding.png").resize((125, 125)))
-officeLogo              = ImageTk.PhotoImage(Image.open("Resources/Images/OfficeBuilding.png").resize((125, 125)))
-erpLogo                 = ImageTk.PhotoImage(Image.open("Resources/Images/ERP.png").resize((125, 125)))
-factoryLogo             = ImageTk.PhotoImage(Image.open("Resources/Images/Factory.png").resize((125, 125)))
+residentialLogo         = ImageTk.PhotoImage(Image.open("Resources/Images/ResidentialBuilding.png").resize((100, 100)))
+officeLogo              = ImageTk.PhotoImage(Image.open("Resources/Images/OfficeBuilding.png").resize((100, 100)))
+erpLogo                 = ImageTk.PhotoImage(Image.open("Resources/Images/ERP.png").resize((100, 100)))
+factoryLogo             = ImageTk.PhotoImage(Image.open("Resources/Images/Factory.png").resize((100, 100)))
 
-CNPP_D9Image            = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9.png").resize((75, 75)))
-CNPP_D9AImage           = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9A.png").resize((75, 75)))
+CNPP_D9Image            = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9.png").resize((100, 100)))
+CNPP_D9AImage           = ImageTk.PhotoImage(Image.open("Resources/Images/CNPP_D9A.png").resize((100, 100)))
 
 
 ### Colours ###

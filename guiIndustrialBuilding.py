@@ -55,8 +55,22 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
         "riskCategoryCoef" : 0.0,
         "autoWaterExtinctCoef" : 0.0}
     
-    def calculationButton():
-        pass
+    def createIndustrialBuildingButton():
+        name                       = buildingNameEntryVar.get()
+        height                     = buildingHeightEntryVar.get()
+        surface                    = buildingSurfaceEntryVar.get()
+        buildingFireResistanceCoef = buildingFireResistanceCoefTextVar.get()
+        hazardousMaterialCoef      = hazardousMaterialVar.get()
+        internalInterventionCoef   = buildingInterventionTypeCoefTextVar.get()
+        riskCategoryCoef           = buildingRiskCatTextVar.get()
+        
+        building = indB.IndustrialBuilding(name, height, surface, buildingFireResistanceCoef, hazardousMaterialCoef, internalInterventionCoef, riskCategoryCoef)
+        industrialBuildingObjects.append(building)
+        
+        buildingLabel = ttk.Label(summaryFrame, text = str(building), font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
+        buildingLabel.pack()
+        summaryCanvas.config(scrollregion = summaryCanvas.bbox("all"))
+    
     
     
     def clearIndustrialBuildingButton():
@@ -67,6 +81,10 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
             if len(labelChildren) != 0:
                 lastWidget = labelChildren[-1]
                 lastWidget.destroy()
+    
+    
+    def calculationButton():
+        pass
     
     
     def calculationButtonFinal():
@@ -166,7 +184,7 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
     style = ttk.Style()
     style.configure("Green.TButton", font=("TkDefaultFont", 12, "bold"), foreground = hydrogainGreen)
     
-    calculateRow7Button = ttk.Button(industrialBuildingWindow, text = "CREATE BUILDING", style = "Green.TButton", command = calculationButton)
+    calculateRow7Button = ttk.Button(industrialBuildingWindow, text = "CREATE BUILDING", style = "Green.TButton", command = createIndustrialBuildingButton)
     calculateRow7Button.grid(row = 8, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
     
     ### Row 9 ###
