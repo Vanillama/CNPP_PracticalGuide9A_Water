@@ -114,12 +114,11 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
             industrialBuildingObjectValue["intermFlowRate"]               = i.intermFlowRate()
             industrialBuildingObjectValue["riskCategoryCoef"]             = i.riskCategoryCoef()[0]
             industrialBuildingObjectValue["autoWaterExtinctCoef"]         = i.autoWaterExtinctCoef()[0]
-            industrialBuildingObjectValue["currentBuildingFlowRate"]      = min(720, max(60.0, i.autoWaterExtinctCoef()[0])) if(i.autoWaterExtinctCoef()[1] == True) else max(60.0, i.autoWaterExtinctCoef()[0])
+            industrialBuildingObjectValue["currentBuildingFlowRate"]      = round(min(720, max(60.0, i.autoWaterExtinctCoef()[0])) / 30) * 30 if(i.autoWaterExtinctCoef()[1] == True) else round(max(60.0, i.autoWaterExtinctCoef()[0]) / 30) * 30
             industrialBuildingObjectValue["finalFlowRate"]                = 60.0
             
-            print(len(industrialBuildingObjects))
             for j in industrialBuildingObjects:
-                currentBuildingFlowRateTemp = min(720, max(60.0, j.autoWaterExtinctCoef()[0])) if(j.autoWaterExtinctCoef()[1] == True) else max(60.0, j.autoWaterExtinctCoef()[0])
+                currentBuildingFlowRateTemp = round(min(720, max(60.0, j.autoWaterExtinctCoef()[0])) /30) * 30 if(j.autoWaterExtinctCoef()[1] == True) else round(max(60.0, j.autoWaterExtinctCoef()[0]) / 30) * 30
                 if currentBuildingFlowRateTemp > industrialBuildingObjectValue["finalFlowRate"]:
                     industrialBuildingObjectValue["finalFlowRate"] = currentBuildingFlowRateTemp
                 else:
