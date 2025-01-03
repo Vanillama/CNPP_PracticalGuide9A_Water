@@ -29,7 +29,7 @@ class IndustrialBuilding:
             return (-0.1)
         elif (self.fireResistance == ">=R30"):
             return (0.0)
-        elif (self.foreResistance == "<R30"):
+        elif (self.fireResistance == "<R30"):
             return (0.1)
     
     def hazardousMaterialCoef(self):
@@ -49,29 +49,29 @@ class IndustrialBuilding:
             return (0.0)
         
     def sumCoef1(self):
-        return (self.heightCoef() + self.fireResistanceCoef() + self.hazardousMaterialCoef() + self.internalInterventionTypeCoef())
+        return round(self.heightCoef() + self.fireResistanceCoef() + self.hazardousMaterialCoef() + self.internalInterventionTypeCoef(), 1)
     
     def sumCoef2(self):
-        return (1.0 + self.heightCoef() + self.fireResistanceCoef() + self.hazardousMaterialCoef() + self.internalInterventionTypeCoef())
+        return round(1.0 + self.heightCoef() + self.fireResistanceCoef() + self.hazardousMaterialCoef() + self.internalInterventionTypeCoef(), 1)
     
     def intermFlowRate(self):
-        return (30.0 * (self.surface / 500.0) * self.sumCoef2())
+        return round(30.0 * (self.surface / 500.0) * self.sumCoef2(), 1)
     
     def riskCategoryCoef(self):
         if (self.riskCategory == "RF"):
-            return (self.intermFlowRate() * 0.5)
+            return round(self.intermFlowRate() * 0.5, 1), "RF"
         elif (self.riskCategory == "1"):
-            return (self.intermFlowRate() * 1.0)
+            return round(self.intermFlowRate() * 1.0, 1), "1"
         elif (self.riskCategory == "2"):
-            return (self.intermFlowRate() * 1.5)
+            return round(self.intermFlowRate() * 1.5, 1),"2"
         elif (self.riskCategory == "3"):
-            return (self.intermFlowRate() * 2.0)
+            return round(self.intermFlowRate() * 2.0, 1), "3"
         
     def autoWaterExtinctCoef(self):
         if (self.autoWaterExtinctDevc == True):
-            return (self.riskCategoryCoef() / 2.0)
+            return round(self.riskCategoryCoef()[0] / 2.0, 1), True
         else:
-            return (self.riskCategoryCoef())
+            return round(self.riskCategoryCoef()[0], 1), False
 
 
 
@@ -83,9 +83,9 @@ class IndustrialBuilding:
     The building contains hazardous materials : {self.hazardousMaterial}.
     The type of internal intervention is : {self.internalInterventionType}.
     The building is equipped with a fire safety system : {self.autoWaterExtinctDevc}.
-    _____________________________________________________________________________________________"""
+    _____________________________________________________________________________________________________"""
     
     def __repr__(self):
         return f"""IndustrialBuilding(name = {self.name}, height = {self.height}, surface = {self.surface}, fireResistance = {self.fireResistance}, hazardousMaterial = {self.hazardousMaterial}, internalInterventionType = {self.internalInterventionType}, 
     riskCategory = {self.riskCategory}, autoWaterExtinctDevc = {self.autoWaterExtinctDevc})
-    _____________________________________________________________________________________________"""
+    _____________________________________________________________________________________________________"""

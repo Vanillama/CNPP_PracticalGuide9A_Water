@@ -4,6 +4,7 @@ from guiOfficeBuilding import officeBuildingWindow
 from guiERPBuilding import erpBuildingWindow
 from guiIndustrialBuilding import industrialBuildingWindow
 from guiCredits import creditsWindow
+from guiD9AGuide import d9aCalculationWindow
 
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -85,6 +86,8 @@ def openIndustrialBuildWin():
 def openCredits():
     creditsWindow(mainWindow, screenWidth, screenHeight, {"cnppD9" : CNPP_D9Image, "cnppD9A" : CNPP_D9AImage, "residentialImage" : residentialLogo, "officeImage" : officeLogo, "erpImage" : erpLogo, "industrialImage" : factoryLogo})  
 
+def openD9AGuideWin():
+    d9aCalculationWindow(mainWindow, screenWidth, screenHeight)
 
 
 ### Row 0 ###
@@ -121,12 +124,13 @@ buttonIndustrialBuild.grid(row = 2, column = 7, padx = 30)
 
 
 ### Row 3 ###
-frame = ttk.Frame(mainWindow)
-frame.grid(row = 3, column = 0, columnspan = 4)
+# LOGO + CREDITS
+creditsFrame = ttk.Frame(mainWindow)
+creditsFrame.grid(row = 3, column = 0, columnspan = 4)
 
-backgroundLabelLogo = ttk.Label(frame, image = cnppLogo_Simple)
-backgroundLabelD9 = ttk.Label(frame, image = CNPP_D9Image)
-backgroundLabelD9A = ttk.Label(frame, image = CNPP_D9AImage)
+backgroundLabelLogo = ttk.Label(creditsFrame, image = cnppLogo_Simple)
+backgroundLabelD9 = ttk.Label(creditsFrame, image = CNPP_D9Image)
+backgroundLabelD9A = ttk.Label(creditsFrame, image = CNPP_D9AImage)
 
 backgroundLabelD9.grid(row = 0, column = 0, padx = 5)
 backgroundLabelD9A.grid(row = 0, column = 1, padx = 5)
@@ -135,8 +139,18 @@ backgroundLabelLogo.grid(row = 0, column = 2, padx = 5)
 style = ttk.Style()
 style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
 
-creditsButton = ttk.Button(frame, text = "Credits", style = "HGBlue.TButton", command = openCredits)
+creditsButton = ttk.Button(creditsFrame, text = "Credits", style = "HGBlue.TButton", command = openCredits)
 creditsButton.grid(row = 1, column = 0, columnspan = 4, sticky = "nswe", padx = 5, pady = 5)
+
+# Guide D9A
+d9AFrame = ttk.Frame(mainWindow)
+d9AFrame.grid(row = 3, column = 5, columnspan = 3)
+
+buttonD9ATitle = ttk.Label(d9AFrame, text = "D9A Guide Calculation", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
+buttonD9ATitle.grid(row = 0, column = 0, columnspan = 3)
+
+buttonD9A  = ttk.Button(d9AFrame, image = CNPP_D9AImage, command = openD9AGuideWin, padding = 30)
+buttonD9A.grid(row = 1, column = 1, padx = 30)
 
 
 ### Row 4 ###

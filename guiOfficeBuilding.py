@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import officeBuilding as oB
+import guiD9AGuide as d9a
 
 
 ### Colours ###
@@ -13,7 +14,7 @@ hydrogainGreen = "#A1CA18"
 def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     officeBuildingWindow = tk.Toplevel(rootWindow)
-    officeBuildingWindow.title("CNPP Practical Guide - Office Building")
+    officeBuildingWindow.title("CNPP D9 Practical Guide - Office Building")
     #officeBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
     officeBuildingWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
     officeBuildingWindow.geometry(str(int(screenWidth*1.2)) + "x" + str(int(screenHeight*1.2)))
@@ -57,7 +58,11 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
         calculationButton()
         
         ### Print created building information in the Canvas
-        buildingLabel = ttk.Label(summaryFrame, text = str(building), font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
+        summaryText = (str(building) + "\n"
+                       "The calculated flowrate is [m3.h-1]: " + str(officeBuildingObjectValue["flowRateTxt"]))
+        d9a.allBuildingsText.append(summaryText)
+        
+        buildingLabel = ttk.Label(summaryFrame, text = summaryText, font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
         buildingLabel.pack()
         summaryCanvas.update_idletasks()
         summaryCanvas.config(scrollregion = summaryCanvas.bbox("all"))
@@ -66,6 +71,7 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     def clearOfficeBuildingButton():
         if len(officeBuildingObjects) > 0:
             del officeBuildingObjects[-1]
+            del d9a.allBuildingsText[-1]
             
             labelChildren = summaryFrame.winfo_children()
             if len(labelChildren) != 0:
@@ -90,11 +96,16 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
             officeBuildingObjectValue["minimalDurationTxt"]                   = i.minimalDurationCalculation()
             
             ### Update label values 
-            flowRateValue.config(text                          = i.flowRateCalculation())
-            fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
-            fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
-            fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
-            minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            # flowRateValue.config(text                          = i.flowRateCalculation())
+            # fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
+            # fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
+            # fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
+            # minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            flowRateValue.config(text                          = officeBuildingObjectValue["flowRateTxt"])
+            fireHydrantPointsNmbValue.config(text              = officeBuildingObjectValue["fireHydrantPointsNmbTxt"])
+            fireHydrantPointsDistanceValue.config(text         = officeBuildingObjectValue["fireHydrantPointsDistanceTxt"])
+            fireHydrantPointsEntranceDistanceValue.config(text = officeBuildingObjectValue["fireHydrantPointsEntranceDistanceTxt"])
+            minimalDurationValue.config(text                   = officeBuildingObjectValue["minimalDurationTxt"])
         else:
             flowRateValue.config(text                          = "N/A")
             fireHydrantPointsNmbValue.config(text              = "N/A")

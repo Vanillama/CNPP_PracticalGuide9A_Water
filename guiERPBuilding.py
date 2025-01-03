@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import erpBuilding as erpB
+import guiD9AGuide as d9a
 
 
 ### Colours ###
@@ -13,7 +14,7 @@ hydrogainGreen = "#A1CA18"
 def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
     
     erpBuildingWindow = tk.Toplevel(rootWindow)
-    erpBuildingWindow.title("CNPP Practical Guide - ERP Building")
+    erpBuildingWindow.title("CNPP D9 Practical Guide - ERP Building")
     #erpBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
     erpBuildingWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
     erpBuildingWindow.geometry(str(int(screenWidth*1.2)) + "x" + str(int(screenHeight*1.2)))
@@ -57,7 +58,11 @@ def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
         calculationButton()
         
         ### Print created building information in the Canvas
-        buildingLabel = ttk.Label(summaryFrame, text = str(building), font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
+        summaryText = (str(building) + "\n"
+                       "The calculated flowrate is [m3.h-1]: " + str(erpBuildingObjectValue["flowRateTxt"]))
+        d9a.allBuildingsText.append(summaryText)
+        
+        buildingLabel = ttk.Label(summaryFrame, text = summaryText, font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
         buildingLabel.pack()
         summaryCanvas.update_idletasks()
         summaryCanvas.config(scrollregion = summaryCanvas.bbox("all"))
@@ -66,6 +71,7 @@ def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
     def clearERPBuildingButton():
         if len(erpBuildingObjects) > 0:
             del erpBuildingObjects[-1]
+            del d9a.allBuildingsText[-1]
             
             labelChildren = summaryFrame.winfo_children()
             if len(labelChildren) != 0:
@@ -90,11 +96,16 @@ def erpBuildingWindow(rootWindow, screenWidth, screenHeight):
             erpBuildingObjectValue["minimalDurationTxt"]                   = i.minimalDurationCalculation()
             
             ### Update label values    
-            flowRateValue.config(text                          = i.flowRateCalculation())
-            fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
-            fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
-            fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
-            minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            # flowRateValue.config(text                          = i.flowRateCalculation())
+            # fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
+            # fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
+            # fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
+            # minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            flowRateValue.config(text                          = erpBuildingObjectValue["flowRateTxt"])
+            fireHydrantPointsNmbValue.config(text              = erpBuildingObjectValue["fireHydrantPointsNmbTxt"])
+            fireHydrantPointsDistanceValue.config(text         = erpBuildingObjectValue["fireHydrantPointsDistanceTxt"])
+            fireHydrantPointsEntranceDistanceValue.config(text = erpBuildingObjectValue["fireHydrantPointsEntranceDistanceTxt"])
+            minimalDurationValue.config(text                   = erpBuildingObjectValue["minimalDurationTxt"])
         else:
             flowRateValue.config(text                          = "N/A")
             fireHydrantPointsNmbValue.config(text              = "N/A")

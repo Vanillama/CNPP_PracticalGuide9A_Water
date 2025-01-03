@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import residentialBuilding as rB
+import guiD9AGuide as d9a
 
 
 ### Colours ###
@@ -13,7 +14,7 @@ hydrogainGreen = "#A1CA18"
 def residentialBuildingWindow(rootWindow, screenWidth, screenHeight): 
     
     residentialBuildingWindow = tk.Toplevel(rootWindow)
-    residentialBuildingWindow.title("CNPP Practical Guide - Residential Building")
+    residentialBuildingWindow.title("CNPP D9 Practical Guide - Residential Building")
     #residentialBuildingWindow.iconbitmap("Resources/Images/HydroGainLogo_NoText.ico")
     residentialBuildingWindow.iconbitmap("Resources/Images/CNPPLogo_Simple.ico")
     residentialBuildingWindow.geometry(str(int(screenWidth*1.2)) + "x" + str(int(screenHeight*1.2)))
@@ -64,7 +65,11 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
         calculationButton()
         
         ### Print created building information in the Canvas
-        buildingLabel = ttk.Label(summaryFrame, text = str(building), font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
+        summaryText = (str(building) + "\n"
+                       "The calculated flowrate is [m3.h-1]: " + str(residentialBuildingObjectValue["flowRateTxt"]))
+        d9a.allBuildingsText.append(summaryText)
+        
+        buildingLabel = ttk.Label(summaryFrame, text = summaryText, font = ("TkDefaultFont", 10), foreground = hydrogainBlue)
         buildingLabel.pack()
         summaryCanvas.update_idletasks()
         summaryCanvas.config(scrollregion = summaryCanvas.bbox("all"))
@@ -73,6 +78,7 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
     def clearResidentialBuildingButton():
         if len(residentialBuildingObjects) > 0:
             del residentialBuildingObjects[-1]
+            del d9a.allBuildingsText[-1]
             
             labelChildren = summaryFrame.winfo_children()
             if len(labelChildren) != 0:
@@ -98,12 +104,19 @@ def residentialBuildingWindow(rootWindow, screenWidth, screenHeight):
             residentialBuildingObjectValue["minimalDurationTxt"]                   = i.minimalDurationCalculation()
             
             ### Update label values           
-            buildingClassValue.config(text                     = i.buildingClass())
-            flowRateValue.config(text                          = i.flowRateCalculation())
-            fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
-            fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
-            fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
-            minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            # buildingClassValue.config(text                     = i.buildingClass())
+            # flowRateValue.config(text                          = i.flowRateCalculation())
+            # fireHydrantPointsNmbValue.config(text              = i.fireHydrantPointsCalculation())
+            # fireHydrantPointsDistanceValue.config(text         = i.distanceFireHydrantPoints())
+            # fireHydrantPointsEntranceDistanceValue.config(text = i.distanceFireHydrantEntrance())
+            # minimalDurationValue.config(text                   = i.minimalDurationCalculation())
+            buildingClassValue.config(text                     = residentialBuildingObjectValue["buildingClassTxt"])
+            flowRateValue.config(text                          = residentialBuildingObjectValue["flowRateTxt"])
+            fireHydrantPointsNmbValue.config(text              = residentialBuildingObjectValue["fireHydrantPointsNmbTxt"])
+            fireHydrantPointsDistanceValue.config(text         = residentialBuildingObjectValue["fireHydrantPointsDistanceTxt"])
+            fireHydrantPointsEntranceDistanceValue.config(text = residentialBuildingObjectValue["fireHydrantPointsEntranceDistanceTxt"])
+            minimalDurationValue.config(text                   = residentialBuildingObjectValue["minimalDurationTxt"])
+            
         else:
             buildingClassValue.config(text                     = "N/A")
             flowRateValue.config(text                          = "N/A")
