@@ -26,6 +26,8 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     officeBuildingWindow.rowconfigure(4, weight = 1)
     officeBuildingWindow.rowconfigure(5, weight = 1)
     officeBuildingWindow.rowconfigure(6, weight = 1)
+    officeBuildingWindow.rowconfigure(7, weight = 1)
+    officeBuildingWindow.rowconfigure(8, weight = 1)
     
     officeBuildingWindow.columnconfigure(0, weight = 1)
     officeBuildingWindow.columnconfigure(1, weight = 1)
@@ -59,6 +61,7 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
         
         ### Print created building information in the Canvas
         summaryText = (str(building) + "\n"
+                       "The building's name is : " + name + "\n"
                        "The calculated flowrate is [m3.h-1]: " + str(officeBuildingObjectValue["flowRateTxt"]))
         d9a.allBuildingsText.append(summaryText)
         
@@ -168,27 +171,27 @@ def officeBuildingWindow(rootWindow, screenWidth, screenHeight):
     style.configure("Green.TButton", font=("TkDefaultFont", 12, "bold"), foreground = hydrogainGreen)
     
     createBuildingButton = ttk.Button(officeBuildingWindow, text = "CREATE BUILDING + CALCULATE", style = "Green.TButton", command = createOfficeBuildingButton)
-    createBuildingButton.grid(row = 4, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    createBuildingButton.grid(row = 5, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
   
     ### Row 5 ###
     style = ttk.Style()
     style.configure("Red.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
     
     clearButton = ttk.Button(officeBuildingWindow, text = "CLEAR", style = "Red.TButton", command = clearOfficeBuildingButton)
-    clearButton.grid(row = 5, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    clearButton.grid(row = 7, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
     
     ### Row 6 ###
-    style = ttk.Style()
-    style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
+    # style = ttk.Style()
+    # style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     
-    createLatexFileButton = ttk.Button(officeBuildingWindow, text = "GENERATE LaTeX", style = "HGBlue.TButton", command = generateLaTexFile)
-    createLatexFileButton.grid(row = 6, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    # createLatexFileButton = ttk.Button(officeBuildingWindow, text = "GENERATE LaTeX", style = "HGBlue.TButton", command = generateLaTexFile)
+    # createLatexFileButton.grid(row = 6, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
     
     
     
     ##### RESULTS GUI #####
     calculationFrame = ttk.Frame(officeBuildingWindow)
-    calculationFrame.grid(row = 4, column = 2, rowspan = 3, sticky = "we", padx = 10, pady = 10)
+    calculationFrame.grid(row = 4, column = 2, rowspan = 5, sticky = "we", padx = 10, pady = 10)
     
     calculationFrame.rowconfigure(0, weight = 1)
     calculationFrame.rowconfigure(1, weight = 1)

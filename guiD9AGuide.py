@@ -144,7 +144,7 @@ Requirements * Maximum theoretical operating time [m3]"""
     textFoam = """Foam solution flow rate * Flooding time (generally 15-25 minutes) [m3]"""
     foamLabel = ttk.Label(foamFrame, text = "Internal firefighting - HF and MF foam", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     foamLabel.grid(row = 0, column = 0)
-    foamLegendLabel = ttk.Label(foamFrame, text = textWaterCurtain, font = ("TkDefaultFont", 8, "italic"), foreground = hydrogainBlue)
+    foamLegendLabel = ttk.Label(foamFrame, text = textFoam, font = ("TkDefaultFont", 8, "italic"), foreground = hydrogainBlue)
     foamLegendLabel.grid(row = 1, column = 0)
     
     foamEntryVar = tk.DoubleVar()
@@ -264,7 +264,7 @@ Requirements * Maximum theoretical operating time [m3]"""
     finalResultFrame = ttk.Frame(d9aCalculationWindow)
     finalResultFrame.grid(row = 12, column = 2, rowspan = 2)
     
-    d9aGuideResultTitle = ttk.Label(finalResultFrame, text = "RESULT [m3.h-1]", font = ("TkDefaultFont", 20, "bold"), foreground = hydrogainBlue)
+    d9aGuideResultTitle = ttk.Label(finalResultFrame, text = "RESULT [m3]", font = ("TkDefaultFont", 20, "bold"), foreground = hydrogainBlue)
     d9aGuideResultTitle.grid(row = 0, column = 0)
     
     d9aGuideResult = ttk.Label(finalResultFrame, text = "N/A", font = ("TkDefaultFont", 20, "bold"), foreground = "red")

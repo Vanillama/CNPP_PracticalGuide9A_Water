@@ -31,6 +31,8 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
     industrialBuildingWindow.rowconfigure(9, weight = 1)
     industrialBuildingWindow.rowconfigure(10, weight = 1)
     industrialBuildingWindow.rowconfigure(11, weight = 1)
+    industrialBuildingWindow.rowconfigure(12, weight = 1)
+    industrialBuildingWindow.rowconfigure(13, weight = 1)
     
     industrialBuildingWindow.columnconfigure(0, weight = 1)
     industrialBuildingWindow.columnconfigure(1, weight = 1)
@@ -75,6 +77,7 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
         
         ###
         summaryText = (str(building) + "\n"
+                       "The building's name is : " + name + "\n"
                        "The calculated flowrate is [m3.h-1]: " + str(industrialBuildingObjectValue["currentBuildingFlowRate"]))
         d9a.allBuildingsText.append(summaryText)
         
@@ -256,27 +259,27 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
     style.configure("Green.TButton", font=("TkDefaultFont", 12, "bold"), foreground = hydrogainGreen)
     
     calculateRow7Button = ttk.Button(industrialBuildingWindow, text = "CREATE BUILDING + CALCULATE", style = "Green.TButton", command = createIndustrialBuildingButton)
-    calculateRow7Button.grid(row = 9, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    calculateRow7Button.grid(row = 10, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
     
     ### Row 10 ###
     style = ttk.Style()
     style.configure("Red.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = "Red")
     
     calculateButton = ttk.Button(industrialBuildingWindow, text = "CLEAR", style = "Red.TButton", command = clearIndustrialBuildingButton)
-    calculateButton.grid(row = 10, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    calculateButton.grid(row = 12, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
     
     ### Row 11 ###
-    style = ttk.Style()
-    style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
+    # style = ttk.Style()
+    # style.configure("HGBlue.TButton", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     
-    createBuildingButton = ttk.Button(industrialBuildingWindow, text = "GENERATE LaTeX", style = "HGBlue.TButton", command = generateLaTexFile)
-    createBuildingButton.grid(row = 11, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
+    # createBuildingButton = ttk.Button(industrialBuildingWindow, text = "GENERATE LaTeX", style = "HGBlue.TButton", command = generateLaTexFile)
+    # createBuildingButton.grid(row = 11, column = 0, columnspan = 2, sticky = "nswe", padx = 30, pady = 5, ipady = 10)
        
     
     
     ### RESULTS GUI ###
     calculationFrame = ttk.Frame(industrialBuildingWindow)
-    calculationFrame.grid(row = 9, column = 2, rowspan = 3, sticky = "we", padx = 10, pady = 10)
+    calculationFrame.grid(row = 9, column = 2, rowspan = 5, sticky = "we", padx = 10, pady = 10)
     
     calculationFrame.rowconfigure(0, weight = 1)
     calculationFrame.rowconfigure(1, weight = 1)
