@@ -9,21 +9,19 @@ class OfficeBuilding:
     def flowRateCalculation(self):
         if (self.height <= 8.0 and self.surface <= 500):
             return ("See the rules set out in the departmental regulations for external fire protection...")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and (self.surface <= 2000.0)):
+        elif (self.height <= 28.0 and self.surface <= 2000.0):
             return ("120 m3.h-1")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and ((self.surface <= 5000.0) and (self.surface > 2000.0))):
+        elif ((self.height <= 28.0 and self.surface <= 5000.0) or self.height > 28.0):
             return ("180 m3.h-1")
         elif (self.surface > 5000.0):
             return ("240 m3.h-1")
-        else:
-            return ("180 m3.h-1")
          
     def fireHydrantPointsCalculation(self):
         if (self.height <= 8.0 and self.surface <= 500):
             return ("See the rules set out in the departmental regulations for external fire protection...")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and (self.surface <= 2000.0)):
+        elif (self.height <= 28.0 and self.surface <= 2000.0):
             return ("2 of 100 mm")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and ((self.surface <= 5000.0) and (self.surface > 2000.0))):
+        elif ((self.height <= 28.0 and self.surface <= 5000.0) or self.height > 28.0):
             return ("3 of 100 mm")
         elif (self.surface > 5000.0):
             return ("2 of 100 mm AND 1 of 2*100 mm (referred to as 150 mm)")
@@ -33,9 +31,9 @@ class OfficeBuilding:
     def distanceFireHydrantPoints(self):
         if (self.height <= 8.0 and self.surface <= 500):
             return ("See the rules set out in the departmental regulations for external fire protection...")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and (self.surface <= 2000.0)):
+        elif (self.height <= 28.0 and self.surface <= 2000.0):
             return ("200 m")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and ((self.surface <= 5000.0) and (self.surface > 2000.0))):
+        elif ((self.height <= 28.0 and self.surface <= 5000.0) or self.height > 28.0):
             return ("200 m")
         elif (self.surface > 5000.0):
             return ("200 m")
@@ -45,26 +43,27 @@ class OfficeBuilding:
     def distanceFireHydrantEntrance(self):
         if (self.height <= 8.0 and self.surface <= 500):
             return ("See the rules set out in the departmental regulations for external fire protection...")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and (self.surface <= 2000.0)):
+        elif (self.height <= 28.0 and self.surface <= 2000.0):
             return ("150 m")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and ((self.surface <= 5000.0) and (self.surface > 2000.0))):
-            return ("100 m (Dry Riser = 60 m)")
+        elif ((self.height <= 28.0 and self.surface <= 5000.0) or self.height > 28.0):
+            return ("100 m (Dry Standpipe = 60 m)")
         elif (self.surface > 5000.0):
-            return ("100 m (Dry Riser = 60 m)")
+            return ("100 m (Dry Standpipe = 60 m)")
         else:
-            return ("100 m (Dry Riser = 60 m)")
+            return ("100 m (Dry Standpipe = 60 m)")
     
     def minimalDurationCalculation(self):
         if (self.height <= 8.0 and self.surface <= 500):
             return ("See the rules set out in the departmental regulations for external fire protection...")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and (self.surface <= 2000.0)):
+        elif (self.height <= 28.0 and self.surface <= 2000.0):
             return ("Unless otherwise specified, the minimum duration for the application of water requirements must be 2 hours.")
-        elif (((self.height <= 28.0) and (self.height > 8.0)) and ((self.surface <= 5000.0) and (self.surface > 2000.0))):
+        elif ((self.height <= 28.0 and self.surface <= 5000.0) or self.height > 28.0):
             return ("Unless otherwise specified, the minimum duration for the application of water requirements must be 2 hours.")
         elif (self.surface > 5000.0):
             return ("Unless otherwise specified, the minimum duration for the application of water requirements must be 2 hours.")
         else:
             return ("Unless otherwise specified, the minimum duration for the application of water requirements must be 2 hours.")
+    
     
     
     def __str__(self):

@@ -33,6 +33,8 @@ class ErpBuilding:
                 return ("To be handled on case by case basis")
             elif (self.surface <= 30000.0 and self.surface > 20000.0):
                 return ("To be handled on case by case basis")
+            else:
+                return ("N/A")
         elif (self.buildingClass == "Class 2"):
             if (self.surface <= 500.0):
                 return ("60 m3/h")
@@ -60,6 +62,8 @@ class ErpBuilding:
                 return ("To be handled on case by case basis")
             elif (self.surface <= 30000.0 and self.surface > 20000.0):
                 return ("To be handled on case by case basis")
+            else:
+                return ("N/A")
         elif (self.buildingClass == "Class 3"):
             if (self.surface <= 500.0):
                 return ("60 m3/h")
@@ -87,6 +91,8 @@ class ErpBuilding:
                 return ("To be handled on case by case basis")
             elif (self.surface <= 30000.0 and self.surface > 20000.0):
                 return ("To be handled on case by case basis")
+            else:
+                return ("N/A")
         elif (self.buildingClass == "Protected"):
             if (self.surface <= 500.0):
                 return ("60 m3/h")
@@ -114,6 +120,8 @@ class ErpBuilding:
                 return ("300 m3/h")
             elif (self.surface <= 30000.0 and self.surface > 20000.0):
                 return ("360 m3/h")
+            else:
+                return ("N/A")
 
     def fireHydrantPointsCalculation(self):
         if (self.buildingClass == "Class 1"):
@@ -137,13 +145,13 @@ class ErpBuilding:
     
     def distanceFireHydrantEntrance(self):
         if (self.buildingClass == "Class 1"):
-            return ("150 m (Dry Riser = 60 m)")
+            return ("150 m (Dry Standpipe = 60 m)")
         elif (self.buildingClass == "Class 2"):
-            return ("150 m (Dry Riser = 60 m)")
+            return ("150 m (Dry Standpipe = 60 m)")
         elif (self.buildingClass == "Class 3"):
-            return ("100 m (Dry Riser = 60 m)")
+            return ("100 m (Dry Standpipe = 60 m)")
         elif (self.buildingClass == "Protected"):
-            return ("150 m (Dry Riser = 60 m)")
+            return ("150 m (Dry Standpipe = 60 m)")
     
     def minimalDurationCalculation(self):
         if (self.buildingClass == "Class 1"):

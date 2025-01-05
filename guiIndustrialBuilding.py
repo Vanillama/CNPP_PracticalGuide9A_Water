@@ -217,7 +217,7 @@ def industrialBuildingWindow(rootWindow, screenWidth, screenHeight):
     buildingInterventionTypeCoefLabel = ttk.Label(industrialBuildingWindow, text = "Internal intervention method", font = ("TkDefaultFont", 12, "bold"), foreground = hydrogainBlue)
     buildingInterventionTypeCoefLabel.grid(row = 6, column = 0)
     
-    buildingInterventionTypeCoefList    = ["24/7 Presence", "24/7 Generalized DAI", "24/7 Fire Intervention"]
+    buildingInterventionTypeCoefList    = ["N/A", "24/7 Presence", "24/7 Generalized DAI", "24/7 Fire Intervention"]
     buildingInterventionTypeCoefTextVar = tk.StringVar()
     buildingInterventionTypeCoefTextVar.set("24/7 Presence")
     buildingInterventionTypeCoefCombobox = ttk.Combobox(industrialBuildingWindow, values = buildingInterventionTypeCoefList, textvariable = buildingInterventionTypeCoefTextVar)

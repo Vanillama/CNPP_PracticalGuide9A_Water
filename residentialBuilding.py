@@ -64,7 +64,7 @@ class ResidentialBuilding:
         if (buildingClass == "Class 3A"):
             return ("150 m")
         if ((buildingClass == "Class 3B") or (buildingClass == "IMH") or (buildingClass == "IGH")):
-            return ("100 m (Dry Riser = 60 m)")
+            return ("100 m (Dry Standpipe = 60 m)")
         
     def minimalDurationCalculation(self):
         buildingClass = self.buildingClass()
